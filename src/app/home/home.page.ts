@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  catalogo:Array<Object> = []
 
-  constructor() {}
 
+  ionViewDidEnter(){
+    console.log("EXECUTOU O VIEW DI ENTER")
+    this.catalogo.push({
+      nome: 'pizza mineira',
+      descricao:"queijo, catupiry, lombo de porco, cogumelos, mangericão",
+      preco:'R$72,00',
+    })
+  }
+  
 }
