@@ -11,11 +11,17 @@ export class HomePage {
 
   ionViewDidEnter(){
     console.log("EXECUTOU O VIEW DI ENTER")
-    this.catalogo.push({
-      nome: 'pizza mineira',
-      descricao:"queijo, catupiry, lombo de porco, cogumelos, mangericão",
-      preco:'R$72,00',
-    })
+    this.listarCatalogo()
   }
-  
+
+  listarCatalogo() {
+    const tamanhoDoBanco = localStorage.length
+    for(let i = 0; i < tamanhoDoBanco; i++){
+      const chaveAtual = localStorage.key(i)
+      const pizzaString = localStorage.getItem(chaveAtual)
+      const pizzaObjeto = JSON.parse(pizzaString)
+      this.catalogo.push(pizzaObjeto)
+    }
+  }
+
 }
