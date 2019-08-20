@@ -19,7 +19,12 @@
     <div *ngIf="catalogo !== undefined && catalogo.length > 0">
       <div *ngFor="let pizza of catalogo">
         <ion-card>
-          <img src="../assets/pizza1.jpg"/>
+          <div class="card-menu">
+            <img src="../assets/pizza1.jpg"/>
+            <ion-button (click)="exibirOpcoes(pizza.id)">
+              <ion-icon name='more' mode='md'></ion-icon>
+            </ion-button>
+          </div>
           <ion-card-content>
             <ion-card-title>
               {{pizza.nomePizza}}
