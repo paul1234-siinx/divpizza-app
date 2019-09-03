@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { threadId } from 'worker_threads';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,7 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private menu:ActionSheetController){
-
-  }
+  constructor(private menu:ActionSheetController, private route:Router){}
 
   catalogo:Array<Object> = []
 
@@ -25,6 +23,7 @@ export class HomePage {
     this.catalogo = []
     const tamanhoDoBanco = localStorage.length
     for(let i = 0; i < tamanhoDoBanco; i++){
+      
       const chaveAtual = localStorage.key(i)
       const pizzaString = localStorage.getItem(chaveAtual)
       const pizzaObjeto = JSON.parse(pizzaString)
@@ -38,7 +37,10 @@ export class HomePage {
       header: "Opçôes da pizza nº "+ id,
       buttons: [{
         text: "Editar Pizza",
-        icon: "create"
+        icon: "create",
+        handler: () =>{
+          this.route.navigate(['edit-pizza', id])
+        }
       },{
         text: "Excluir pizza",
         icon: "trash",
