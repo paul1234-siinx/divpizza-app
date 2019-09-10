@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-pizza',
@@ -32,4 +33,27 @@ export class EditPizzaPage {
     this.descricaoPizza = pizzaObjeto.descricaoPizza
     this.precoPizza = pizzaObjeto.precoPizza
   }
+
+  editar(form) {
+    let dadosPizza = form.value
+    dadosPizza.id = this.idPizza
+    let dadosString = JSON.stringify(dadosPizza)
+    localStorage.setItem(this.idPizza.toString(), dadosString)
+    this.exibirMensagemSucesso()
+    this.voltarParaHome()
+  }
+
+  voltarParaHome(){
+    this.nav.back()
+  }
+
+   async exibirMensagemSucesso(){
+    let thais = await this.toast.create({
+      message: 'Pizza Cadastrada.',
+      duration: 2000,
+      color:'dark'
+    })
+  }
+
+
 }
