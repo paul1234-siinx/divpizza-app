@@ -14,7 +14,7 @@ export class EditPizzaPage {
   precoPizza:String = ""
   idPizza:String = ""
 
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor(private activatedRoute:ActivatedRoute, private nav:NavController, private toast:ToastController) { }
 
 
   ionViewDidEnter() {
