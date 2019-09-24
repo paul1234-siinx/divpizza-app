@@ -31,6 +31,7 @@ export class HomePage {
     }
   }
 
+    
   async exibirOpcoes(id) {
     console.log("clicou na opção: "+ id)
     let cricaoMenu = await this.menu.create({
@@ -49,8 +50,13 @@ export class HomePage {
           localStorage.removeItem(id)
           this.listarCatalogo()
         }
-      }]
+      }
+      ]
     })
     cricaoMenu.present()
+  }
+ comprar(id){
+    console.log(id)
+    this.route.navigate(['comprar-pizza', id])
   }
 }
