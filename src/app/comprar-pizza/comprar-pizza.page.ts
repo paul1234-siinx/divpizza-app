@@ -9,14 +9,43 @@ import { ActivatedRoute } from '@angular/router';
 export class ComprarPizzaPage implements OnInit {
 
   idPizza;
-  constructor(private activatedRoute:ActivatedRoute) { 
-    this.activatedRoute.snapshot.params.id
-  }
+  nomePizza;
+  descricaoPizza;
+  precoPizza;
+  dividir = 1;
+  precoPizzaFixo;
+
+  constructor(private activatedRoute:ActivatedRoute) {}
 
   ngOnInit() {
   }
 
   ionViewDidEnter(){
     this.idPizza = this.activatedRoute.snapshot.params.id
+    let pizzaString = localStorage.getItem(this.idPizza)
+    let pizzaObjeto = JSON.parse(pizzaString)
+    this.descricaoPizza = pizzaObjeto.descricaoPizza;
+    this.nomePizza = pizzaObjeto.nomePizza;
+    this.precoPizza = pizzaObjeto.precoPizza;
+    this.precoPizzaFixo = this.precoPizza;
   }
+
+  incrementar(){
+    this.dividir++
+    this.atualizarPreco()
+    
+  }
+  decrementar(){
+    if(this.dividir > 1){
+    this.dividir--
+    this.atualizarPreco()
+    }
+  }
+  atualizarPreco() {
+      this.precoPizza = (parseFloat(this.precoPizzaFixo)/this.dividir).toFixed(2)
+  }
+  atualizarComRange(){
+    this.atualizarPreco()
+  }
+
 }
