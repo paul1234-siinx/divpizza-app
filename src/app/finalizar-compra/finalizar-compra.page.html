@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>finalizar-compra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label position="floating">Forma de Pagamento</ion-label>
+      <ion-select>
+        <ion-select-option value="cartao">Cartão de Crédito</ion-select-option>
+        <ion-select-option value="cartao">Cartão de Débito</ion-select-option>
+        <ion-select-option value="dinheiro">Dinheiro</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-label position="floating">Digite seu CEP</ion-label>
+      <ion-input [(ngModel)]="cep"></ion-input>
+    </ion-item>
+    <ion-button class="ion-margin-top ion-float-right" (click)="buscarEndereco()">Buscar Endereço</ion-button>
+    <br />
+    <br />
+    <ion-item>
+      <ion-label position="floating">Rua</ion-label>
+      <ion-input readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cidade</ion-label>
+      <ion-input readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Estado</ion-label>
+      <ion-input readonly="readonly"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Nº</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Complemento</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-button color='success' expand="block">Finalizar</ion-button>
+</ion-content>
